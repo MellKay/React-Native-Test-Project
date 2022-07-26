@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, StatusBar, TouchableHighlight, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TouchableHighlight, FlatList, ScrollView, Pressable } from 'react-native';
 import NotePopup from './NotePopup';
 
 export default function Notes() {
@@ -7,9 +7,14 @@ export default function Notes() {
     const [showPopup, setShowPopup] = useState(false)
     const [noteText, setNoteText] = useState("")
 
+    function removeNote(){
+
+    }
+
     const renderItem = ({ item }) => {
       return (
         <ScrollView scrollEnabled={true} style={styles.listItem}> 
+          <Pressable onPress={() => removeNote} style={styles.removeBtn}><Text style={{fontSize: 10}}>X</Text></Pressable>
           <Text style={styles.listItemText}>{item}</Text>
         </ScrollView>
       );
@@ -71,12 +76,17 @@ const styles = StyleSheet.create({
   },
   listItem: {
     width: '45%',
-    padding: 10,
     margin: 10,
     backgroundColor: '#ffff88',
     aspectRatio: 1
   },
   listItemText: {
-    paddingBottom: 12
+    padding: 12
+  },
+  removeBtn: {
+    width: '100%',
+    padding: 8,
+    borderBottomColor: '#f2f280',
+    borderBottomWidth: 1
   }
 });

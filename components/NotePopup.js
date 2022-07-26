@@ -4,7 +4,7 @@ export default function NotePopup({ noteText, setNoteText, setShowPopup, notesLi
 
   function saveNote(){
       setShowPopup(false)
-      setNotesList([...notesList, noteText])
+      setNotesList([noteText, ...notesList])
       setNoteText("")
   }
 
